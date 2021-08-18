@@ -32,8 +32,11 @@ This page is designed to practice Java and Java FX as a Team.
 
 ## Built With / 누구랑 만들었나요?
 
+Nayeon Yoo: https://github.com/U-ny
+Dukrin Yu: https://github.com/YuDeokRin
+Kyungin Hong: https://github.com/HongKyoungIn
 
 
 ## Acknowledgments / 감사의 말
 
-* o__o
+* o__o Thanks, But this project is not done yet, soon it will be updated, Stay tuned
