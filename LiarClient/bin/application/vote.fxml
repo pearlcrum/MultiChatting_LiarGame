@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="450.0" fx:controller="application.VoteController" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="122.0" layoutY="27.0" text="누가 라이어 일까?" textAlignment="CENTER">
+         <font>
+            <Font name="HYsupB" size="25.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="105.0" layoutX="117.0" layoutY="116.0" stroke="#b9b2b2" strokeType="INSIDE" width="210.0" />
+      <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="201.0" layoutY="80.0">
+         <image>
+            <Image url="@../../images/detect.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="vote" layoutX="182.0" layoutY="248.0" mnemonicParsing="false" text="투표하기" onAction="#voteConfirm"/>
+      <ComboBox fx:id="combobox" layoutX="147.0" layoutY="154.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
