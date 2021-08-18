@@ -36,7 +36,7 @@ public class LoginController implements Initializable {
 
 	ClientMain loginSource;
 
-	String IP = "218.239.185.202";
+	String IP = "127.0.0.1";
 	int port = 9876;
 
 	public LoginController() {
@@ -45,7 +45,7 @@ public class LoginController implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) { // ÀÌÇØÇÊ¿ä
+	public void initialize(URL location, ResourceBundle resources) { // ì´í•´í•„ìš”
 		System.out.println("Controller initialize called");
 		try {
 			// loginBtn.setOnAction(e->{LoginBtnPressed(e);});
@@ -59,16 +59,16 @@ public class LoginController implements Initializable {
 
 	}
 
-	// popup ¹ß»ý ÄÚµå
+	// popup ë°œìƒ ì½”ë“œ
 	@FXML
 	private void Login() {
 		System.out.println("Login button pressed!");
 		Alert alert = new Alert(AlertType.INFORMATION);
 		String ID = idField.getText();
 		String PW = pwField.getText();
-		System.out.println("login startClient È£Ãâ");
+		System.out.println("login startClient í˜¸ì¶œ");
 		loginSource.startClient(ID, IP, port);
-		System.out.println("login startClient È£Ãâ ¿Ï·á");
+		System.out.println("login startClient í˜¸ì¶œ ì™„ë£Œ");
 		boolean check = loginSource.getBoolean();
 		System.out.println(check);
 		if (check == true) {
@@ -111,19 +111,19 @@ public class LoginController implements Initializable {
 				e.printStackTrace();
 			}
 		} else {
-			alert.setHeaderText("¾Ë¸²");
-			alert.setContentText("·Î±×ÀÎ¿¡ ½ÇÆÐÇß½À´Ï´Ù.(Áßº¹ ID)");
+			alert.setHeaderText("ì•Œë¦¼");
+			alert.setContentText("ë¡œê·¸ì¸ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.(ì¤‘ë³µ ID)");
 			alert.show();
 		}
 		ClearTextField();
 	}
 
 	public static void terminate() {
-		// X´©¸£¸é ¿©±â È£ÃâµÊ.
+		// Xëˆ„ë¥´ë©´ ì—¬ê¸° í˜¸ì¶œë¨.
 		System.exit(0);
 	}
 
-	// ÆÄ¶ó¹ÌÅÍ Àü´Þ
+	// íŒŒë¼ë¯¸í„° ì „ë‹¬
 	private void sendData(ClientMain loginSource) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("Chatroom_final.fxml"));
@@ -148,7 +148,7 @@ public class LoginController implements Initializable {
 		}
 	}
 
-	// ±âÁ¸Ã¢ ´Ý´Â ÄÚµå
+	// ê¸°ì¡´ì°½ ë‹«ëŠ” ì½”ë“œ
 	public void closeStage() {
 		Stage stage11 = (Stage) loginBtn.getScene().getWindow();
 		Platform.runLater(() -> {
