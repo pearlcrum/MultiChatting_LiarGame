@@ -32,12 +32,6 @@ This page is designed to practice Java and Java FX as a Team.
 
 ## Built With / 누구랑 만들었나요?
 
-### SoongSil University Industrial Information System Engineering Web Team
-* [Jaeyoung Yoon](https://github.com/yjy9500) - FrontEnd design, (JavaScript) 
-* [Junghan Kim](https://github.com/kimjunghan1023) - FrontEnd design (HTML,CSS)
-* [Seungyeon Lee](https://github.com/isaa1107) - Database design(MySQL)
-* [Jaesung Chang](https://github.com/kimjunghan1023) - BackEnd(Java,Spring,MySQL)
-
 
 
 ## Acknowledgments / 감사의 말
