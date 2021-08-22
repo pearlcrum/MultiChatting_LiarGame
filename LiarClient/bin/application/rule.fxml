@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RuleController">
+   <children>
+      <Label layoutX="105.0" layoutY="25.0" text="라이어게임 게임방법" textAlignment="CENTER">
+         <font>
+            <Font name="HYsupB" size="25.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="470.0" layoutX="44.0" layoutY="116.0" stroke="#b9b2b2" strokeType="INSIDE" width="363.0" />
+      <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="201.0" layoutY="80.0">
+         <image>
+            <Image url="@../../images/detect.png" />
+         </image>
+      </ImageView>
+      <TextArea editable="false" layoutX="44.0" layoutY="116.0" prefHeight="470.0" prefWidth="363.0" text="&#10;1. 일반 플레이어는 주제와 제시어를 확인합니다.&#10;&#10;2. 라이어는 제시어를 알 수 없습니다.&#10;&#10;3. 일반 플레이어는 라이어에게 &#10;    제시어를 들키지 않게 설명합니다.&#10;&#10;4. 라이어는 정체를 들키지 않게 &#10;    제시어를 유추해서 설명합니다.&#10;&#10;5. 모든 플레이어는 참여자 목론 순으로&#10;    한 번씩 돌아가며 설명한 뒤, &#10;    제한 시간 내 라이어가 누구인지 투표합니다.&#10;&#10;6. 일반 플레이어는 라이어를 맞추면 승리합니다. &#10;&#10;7. 라이어가 아닌 사람이 라이어로 뽑히면&#10;    라이어가 승리합니다.&#10;&#10;8. 투표 수가 동점이어도 라이어가 승리합니다.&#10;&#10;&#10;&#9;    자! 그럼 게임을 시작해보세요!&#10;">
+         <font>
+            <Font name="HYkanM" size="15.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="close" layoutX="197.0" layoutY="605.0" mnemonicParsing="false" onAction="#closePop" text="닫기">
+         <font>
+            <Font name="HYsupM" size="15.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
