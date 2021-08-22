@@ -33,9 +33,9 @@ If you want to check it in local computer
 
 Change IP to your own computer
 
--LiarServer -> Client serverIP
--LiarServer -> SampleController IP
--LiarClient -> LoginController IP
+- LiarServer -> Client serverIP
+- LiarServer -> SampleController IP
+- LiarClient -> LoginController IP
 
 
 ## Built With / 누구랑 만들었나요?
