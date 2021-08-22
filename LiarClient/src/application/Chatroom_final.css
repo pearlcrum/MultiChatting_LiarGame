@@ -1,0 +1,47 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#vb01{
+	-fx-background-color: #46474A;
+}
+
+#vb02{
+	-fx-background-color:  #636566;
+}
+#vb03{
+	-fx-background-color: rgba(0,0,0,0);
+}
+ListView{
+	-fx-background-color:  #636566;
+	
+}
+
+
+Button{
+	-fx-text-fill: #f4f4f4;
+	-fx-background-color: #46474A;
+	-fx-background-radius: 100px;
+}
+Button:hover {
+    -fx-background-color: #62727b !important;
+	
+}
+#sendMessage{
+	 -fx-background-color:none;
+}
+#chatArea.content{
+    -fx-background-color: #DADADA;
+  
+}
+
+
+
+.scroll-pane .scroll-bar .increment-arrow,
+.scroll-pane .scroll-bar .decrement-arrow {
+    -fx-padding: -2;
+    
+  
+}
+TextField{
+	-fx-text-fill: black;
+}
+
