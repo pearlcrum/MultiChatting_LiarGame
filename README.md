@@ -29,6 +29,14 @@ This page is designed to practice Java and Java FX as a Team.
 3. Game Start and Vote
 4. etc... will be updated soon
 
+If you want to check it in local computer 
+
+Change IP to your own computer
+
+LiarServer -> Client serverIP
+LiarServer -> SampleController IP
+LiarClient -> LoginController IP
+
 
 ## Built With / 누구랑 만들었나요?
 
