@@ -27,7 +27,7 @@ public class Client {
 	static int totalNum = 0;
 	static Vector<String> names = new Vector<String>();
 	static Vector<Integer> vec=new Vector<Integer>();
-	String liarName;
+	static String liarName;
 	static int gameClient=0;
 	
 	
@@ -35,12 +35,12 @@ public class Client {
 		this.LoginSocket = LoginSocket;
 		this.ChatSocket = ChatSocket;
 		// this.VoteSocket = VoteSocket;
-		receiveLogin();// ¹İº¹ÀûÀ¸·Î client·Î ºÎÅÍ message Àü´Ş ¹ŞÀ» ¼ö ÀÖµµ·Ï ¸¸µç´Ù.
+		receiveLogin();// ë°˜ë³µì ìœ¼ë¡œ clientë¡œ ë¶€í„° message ì „ë‹¬ ë°›ì„ ìˆ˜ ìˆë„ë¡ ë§Œë“ ë‹¤.
 		receiveChat();
 		// receiveVote();
 	}
 
-	// Å¬¶óÀÌ¾ğÆ®·ÎºÎÅÍ ¸Ş¼¼Áö¸¦ Àü´Ş ¹Ş´Â ¸Ş¼ÒµåÀÔ´Ï´Ù.
+	// í´ë¼ì´ì–¸íŠ¸ë¡œë¶€í„° ë©”ì„¸ì§€ë¥¼ ì „ë‹¬ ë°›ëŠ” ë©”ì†Œë“œì…ë‹ˆë‹¤.
 	public void receiveLogin() {
 		Runnable thread = new Runnable() {
 			@Override
@@ -48,45 +48,45 @@ public class Client {
 				try {
 					while (true) {
 						InputStream in = LoginSocket.getInputStream();
-						byte[] buffer = new byte[512];// ¹öÆÛ ÀÌ¿ë ÇÑ¹ø¿¡ 512¹ÙÀÌÆ® ¸¸Å­
+						byte[] buffer = new byte[512];// ë²„í¼ ì´ìš© í•œë²ˆì— 512ë°”ì´íŠ¸ ë§Œí¼
 						int length = in.read(buffer);
 						while (length == -1)
 							throw new IOException();
-						// ¸Ş¼¼Áö¸¦ Á¤»óÀûÀ¸·Î ¹ŞÀº °æ¿ì
+						// ë©”ì„¸ì§€ë¥¼ ì •ìƒì ìœ¼ë¡œ ë°›ì€ ê²½ìš°
 
-						// ¸Ş¼¼Áö¸¦ Á¤»óÀûÀ¸·Î ¹ŞÀº °æ¿ì
-						System.out.println("[¸Ş¼¼Áö ¼ö½Å ¼º°ø]");
+						// ë©”ì„¸ì§€ë¥¼ ì •ìƒì ìœ¼ë¡œ ë°›ì€ ê²½ìš°
+						System.out.println("[ë©”ì„¸ì§€ ìˆ˜ì‹  ì„±ê³µ]");
 						String message = new String(buffer, 0, length, "UTF-8");
-						// message¿¡ ¾²°í ½ÍÀº nickNameÀÌ ´ã°ÜÀÖÀ» °ÍÀÌ´Ù.
-						boolean check = info.checkLogin(message);// ´Ğ³×ÀÓ °Ë»ç ÇÔ¼ö
-						if (check == true) {// »ı¼º °¡´ÉÇÑ °æ¿ì
-							sendLogin("»ı¼º°¡´É");
+						// messageì— ì“°ê³  ì‹¶ì€ nickNameì´ ë‹´ê²¨ìˆì„ ê²ƒì´ë‹¤.
+						boolean check = info.checkLogin(message);// ë‹‰ë„¤ì„ ê²€ì‚¬ í•¨ìˆ˜
+						if (check == true) {// ìƒì„± ê°€ëŠ¥í•œ ê²½ìš°
+							sendLogin("ìƒì„±ê°€ëŠ¥");
 							MyDB.addUser(message, new UserConnectInfo(LoginSocket.getInetAddress().toString(),
 									LoginSocket.getPort()));
 							
-							// Ã¤ÆÃ ¼ÒÄÏÀ¸·Î °ªÀÌ º¸³»Áø´Ù.
-							++totalNum;// ¼­¹ö¿Í ¿¬°áµÇ¾î ÀÖ´Â + ÀÖ´ø »ç¶÷µéÀÇ ¼ö
-							names.add(message);// ÀÌ¸§ ¸ñ·Ï¿¡ Ãß°¡;
+							// ì±„íŒ… ì†Œì¼“ìœ¼ë¡œ ê°’ì´ ë³´ë‚´ì§„ë‹¤.
+							++totalNum;// ì„œë²„ì™€ ì—°ê²°ë˜ì–´ ìˆëŠ” + ìˆë˜ ì‚¬ëŒë“¤ì˜ ìˆ˜
+							names.add(message);// ì´ë¦„ ëª©ë¡ì— ì¶”ê°€;
 							vec.add(0);
 							String nameMessage = "";
 							for (String s : names) {
 								nameMessage += s + " ";
 							}
-							String chatMessage = Integer.toString(totalNum) + "::" + message + "´ÔÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù. "
+							String chatMessage = Integer.toString(totalNum) + "::" + message + "ë‹˜ì´ ì…ì¥í•˜ì…¨ìŠµë‹ˆë‹¤. "
 									+ nameMessage;
-							// 2::aa´ÔÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù. aa bb
+							// 2::aaë‹˜ì´ ì…ì¥í•˜ì…¨ìŠµë‹ˆë‹¤. aa bb
 							for (Client client : Main.clients) {
 								client.sendChat(chatMessage);
 							}
 							int numSizeNow=totalNum;
 							
 						} else {
-							sendLogin("»ı¼ººÒ°¡");
+							sendLogin("ìƒì„±ë¶ˆê°€");
 						}
 					}
 				} catch (Exception e) {
 					try {
-						System.out.println("[¸Ş¼¼Áö ¼ö½Å ¿À·ù] ¸®½Ãºê ·Î±×ÀÎ ¿À·ù ");
+						System.out.println("[ë©”ì„¸ì§€ ìˆ˜ì‹  ì˜¤ë¥˜] ë¦¬ì‹œë¸Œ ë¡œê·¸ì¸ ì˜¤ë¥˜ ");
 					} catch (Exception e2) {
 						e2.printStackTrace();
 					}
@@ -96,25 +96,25 @@ public class Client {
 		Main.threadPool.submit(thread);
 	}
 
-	// Å¬¶óÀÌ¾ğÆ®¿¡°Ô ¸Ş¼¼Áö¸¦ Àü¼ÛÇÏ´Â ¸Ş¼Òµå
+	// í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë©”ì„¸ì§€ë¥¼ ì „ì†¡í•˜ëŠ” ë©”ì†Œë“œ
 	public void sendLogin(String message) {
-		// Runnable library ÀÌ¿ëÇØ¼­ thread Á¤ÀÇ ÇØÁÖ°í
+		// Runnable library ì´ìš©í•´ì„œ thread ì •ì˜ í•´ì£¼ê³ 
 		Runnable thread = new Runnable() {
 			@Override
 			public void run() {
 				try {
-					// OutputStream »ç¿ë ÀÌÀ¯, ¸Ş¼¼Áö¸¦ º¸³»ÁÖ°íÀÚ ÇÒ ¶§´Â outputStreamÀ¸·Î
+					// OutputStream ì‚¬ìš© ì´ìœ , ë©”ì„¸ì§€ë¥¼ ë³´ë‚´ì£¼ê³ ì í•  ë•ŒëŠ” outputStreamìœ¼ë¡œ
 					OutputStream out = LoginSocket.getOutputStream();
 					byte[] buffer = message.getBytes("UTF-8");
 					out.write(buffer);
 					out.flush();
 				} catch (Exception e) {
 					try {
-						System.out.println("[¸Ş¼¼Áö ¼Û½Å ¿À·ù]");
-						// ¿¹¿Ü ¹ß»ı ½Ã ¸ŞÀÎ ÇÔ¼öÀÇ clientÀÇ Á¤º¸¸¦ ´ãµç clients¹è¿­¿¡¼­
-						// ÇöÀç Á¸ÀçÇÏ´Â Client¸¦ Áö¿öÁØ´Ù.
+						System.out.println("[ë©”ì„¸ì§€ ì†¡ì‹  ì˜¤ë¥˜]");
+						// ì˜ˆì™¸ ë°œìƒ ì‹œ ë©”ì¸ í•¨ìˆ˜ì˜ clientì˜ ì •ë³´ë¥¼ ë‹´ë“  clientsë°°ì—´ì—ì„œ
+						// í˜„ì¬ ì¡´ì¬í•˜ëŠ” Clientë¥¼ ì§€ì›Œì¤€ë‹¤.
 						Main.clients.remove(Client.this);
-						// ¿À·ù°¡ »ı±ä clientÀÇ socketÀ» ´İ´Â´Ù.
+						// ì˜¤ë¥˜ê°€ ìƒê¸´ clientì˜ socketì„ ë‹«ëŠ”ë‹¤.
 						LoginSocket.close();
 					} catch (Exception e2) {
 						e2.printStackTrace();
@@ -122,7 +122,7 @@ public class Client {
 				}
 			}
 		};
-		// Main threadPool¿¡ Ãß°¡ ÇÑ´Ù.
+		// Main threadPoolì— ì¶”ê°€ í•œë‹¤.
 		Main.threadPool.submit(thread);
 	}
 
@@ -133,20 +133,20 @@ public class Client {
 				try {
 					while (true) {
 						InputStream in = ChatSocket.getInputStream();
-						byte[] buffer = new byte[512];// ¹öÆÛ ÀÌ¿ë ÇÑ¹ø¿¡ 512¹ÙÀÌÆ® ¸¸Å­
+						byte[] buffer = new byte[512];// ë²„í¼ ì´ìš© í•œë²ˆì— 512ë°”ì´íŠ¸ ë§Œí¼
 						int length = in.read(buffer);
 						while (length == -1)
 							throw new IOException();
-						System.out.println("[¸Ş¼¼Áö ¼ö½Å ¼º°ø]");
+						System.out.println("[ë©”ì„¸ì§€ ìˆ˜ì‹  ì„±ê³µ]");
 						String message = new String(buffer, 0, length, "UTF-8");
-						if (message.equals("°ÔÀÓ½ÃÀÛ")) {
+						if (message.equals("ê²Œì„ì‹œì‘")) {
 							liarSelect();
 						}
-						else if (message.length()>=9 &&message.substring(0,8).equals(":Á¾·áÇÒ°Ì´Ï´Ù.")) {
+						else if (message.length()>=9 &&message.substring(0,8).equals(":ì¢…ë£Œí• ê²ë‹ˆë‹¤.")) {
 							message=message.substring(8);
 							MyDB.deleteUser(message);
 							totalNum--;
-							System.out.println("¿©±âºÁ¶ó"+message);
+							System.out.println("ì—¬ê¸°ë´ë¼"+message);
 							Main.clients.remove(Client.this);
 							for(int i=0; i<names.size();i++) {
 								System.out.println(names.get(i));
@@ -166,19 +166,19 @@ public class Client {
 							{
 								nameMessage+=s+" ";
 							}
-							String chatMessage=Integer.toString(totalNum)+"::"+message+"´ÔÀÌ ÅğÀåÇÏ¼Ì½À´Ï´Ù. "+nameMessage;
-							//2::aa´ÔÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù. aa bb
+							String chatMessage=Integer.toString(totalNum)+"::"+message+"ë‹˜ì´ í‡´ì¥í•˜ì…¨ìŠµë‹ˆë‹¤. "+nameMessage;
+							//2::aaë‹˜ì´ ì…ì¥í•˜ì…¨ìŠµë‹ˆë‹¤. aa bb
 							for(Client client: Main.clients) {
 								client.sendChat(chatMessage);
 							}
 						} 
-						else if(message.substring(0,3).equals("ÅõÇ¥:")){
+						else if(message.substring(0,3).equals("íˆ¬í‘œ:")){
 							for(Client client: Main.clients) {
-								client.sendChat("´©±º°¡ ÅõÇ¥Çß½À´Ï´Ù. \n´Ù½Ã ÅõÇ¥´Â ºÒ°¡´ÉÇÏ¸ç ¸ğµÎ°¡ ÅõÇ¥ÇÏ¸é °á°ú°¡ °ø°³µË´Ï´Ù.");
+								client.sendChat("ëˆ„êµ°ê°€ íˆ¬í‘œí–ˆìŠµë‹ˆë‹¤. \në‹¤ì‹œ íˆ¬í‘œëŠ” ë¶ˆê°€ëŠ¥í•˜ë©° ëª¨ë‘ê°€ íˆ¬í‘œí•˜ë©´ ê²°ê³¼ê°€ ê³µê°œë©ë‹ˆë‹¤.");
 							}
 							String liar=message.substring(3);
 							System.out.println(liar);
-							System.out.println("ÇöÀç ¸ñ·Ï¿¡ ÀÖ´Â »ç¶÷µé");
+							System.out.println("í˜„ì¬ ëª©ë¡ì— ìˆëŠ” ì‚¬ëŒë“¤");
 							for(int i=0; i<names.size();i++)
 							{
 								System.out.println(names.get(i));
@@ -197,17 +197,17 @@ public class Client {
 							if(gameClient==0)
 							{
 								
-								//°¡Àå ¸¹ÀÌ »ÌÈù »ç¶÷ max°³ »ÌÇû°í, votedLiar¿¡ ÀÎµ¦½º°¡ µé¾î°¡ ÀÖ´Ù. names ¹è¿­ÀÇ index¿Í µ¿ÀÏ
-								//°¡Àå ¸¹ÀÌ »ÌÈù »ç¶÷ÀÇ index´Â votedLiar, names¿¡¼­ Ã£À¸¸é µÈ´Ù.
+								//ê°€ì¥ ë§ì´ ë½‘íŒ ì‚¬ëŒ maxê°œ ë½‘í˜”ê³ , votedLiarì— ì¸ë±ìŠ¤ê°€ ë“¤ì–´ê°€ ìˆë‹¤. names ë°°ì—´ì˜ indexì™€ ë™ì¼
+								//ê°€ì¥ ë§ì´ ë½‘íŒ ì‚¬ëŒì˜ indexëŠ” votedLiar, namesì—ì„œ ì°¾ìœ¼ë©´ ëœë‹¤.
 								for(Client client: Main.clients) {
-									client.sendChat("¶óÀÌ¾î´Â "+liarName+"´ÔÀÌ¾ú½À´Ï´Ù.");
+									client.sendChat("ë¼ì´ì–´ëŠ” "+liarName+"ë‹˜ì´ì—ˆìŠµë‹ˆë‹¤.");
 								}
-							//vec ¹è¿­¿¡ 0¹ø ÀÎµ¦½º ¸î°³ 1¹ø ÀÎµ¦½º ¸î°³ 2¹øÀÎµ¦½º ¸î°³ ¹Ş¾Ò´ÂÁö ¾Ë ¼ö ÀÖÀ½
+							//vec ë°°ì—´ì— 0ë²ˆ ì¸ë±ìŠ¤ ëª‡ê°œ 1ë²ˆ ì¸ë±ìŠ¤ ëª‡ê°œ 2ë²ˆì¸ë±ìŠ¤ ëª‡ê°œ ë°›ì•˜ëŠ”ì§€ ì•Œ ìˆ˜ ìˆìŒ
 							}
 							
 						}
 						else {
-							// Àü´Ş ¹ŞÀº ¸Ş¼¼Áö¸¦ ´Ù¸¥ client¿¡°Ôµµ º¸³¾ ¼ö ÀÖµµ·Ï
+							// ì „ë‹¬ ë°›ì€ ë©”ì„¸ì§€ë¥¼ ë‹¤ë¥¸ clientì—ê²Œë„ ë³´ë‚¼ ìˆ˜ ìˆë„ë¡
 							for (Client client : Main.clients) {
 								client.sendChat(message);
 							}
@@ -216,7 +216,7 @@ public class Client {
 					}
 				} catch (Exception e) {
 					try {
-						System.out.println("[¸Ş¼¼Áö ¼ö½Å ¿À·ù] ");
+						System.out.println("[ë©”ì„¸ì§€ ìˆ˜ì‹  ì˜¤ë¥˜] ");
 						e.printStackTrace();
 					} catch (Exception e2) {
 						e2.printStackTrace();
@@ -227,29 +227,29 @@ public class Client {
 		Main.threadPool.submit(thread);
 	}
 
-	// Å¬¶óÀÌ¾ğÆ®¿¡°Ô ¸Ş¼¼Áö¸¦ Àü¼ÛÇÏ´Â ¸Ş¼Òµå
+	// í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë©”ì„¸ì§€ë¥¼ ì „ì†¡í•˜ëŠ” ë©”ì†Œë“œ
 	public void sendChat(String message) {
-		// Runnable library ÀÌ¿ëÇØ¼­ thread Á¤ÀÇ ÇØÁÖ°í
+		// Runnable library ì´ìš©í•´ì„œ thread ì •ì˜ í•´ì£¼ê³ 
 		Runnable thread = new Runnable() {
 			@Override
 			public void run() {
 				try {
-					// OutputStream »ç¿ë ÀÌÀ¯, ¸Ş¼¼Áö¸¦ º¸³»ÁÖ°íÀÚ ÇÒ ¶§´Â outputStreamÀ¸·Î
+					// OutputStream ì‚¬ìš© ì´ìœ , ë©”ì„¸ì§€ë¥¼ ë³´ë‚´ì£¼ê³ ì í•  ë•ŒëŠ” outputStreamìœ¼ë¡œ
 					OutputStream out = ChatSocket.getOutputStream();
 					byte[] buffer = message.getBytes("UTF-8");
-					// ¿À·ù ¹Ì ¹ß»ı ½Ã ¼­¹ö¿¡¼­ client·Î Àü¼ÛÇÏ±â À§ÇØ¼­
-					// out¿¡¼­ write ÇØÁØ´Ù.
+					// ì˜¤ë¥˜ ë¯¸ ë°œìƒ ì‹œ ì„œë²„ì—ì„œ clientë¡œ ì „ì†¡í•˜ê¸° ìœ„í•´ì„œ
+					// outì—ì„œ write í•´ì¤€ë‹¤.
 					out.write(buffer);
-					System.out.println("[¸Ş¼¼Áö ¼Û½Å ¼º°ø]");
-					// ¼º°øÀûÀ¸·Î ¿©±â±îÁö Àü¼ÛÇß´Ù´Â °ÍÀ» ¾Ë¸®±â À§ÇØ ¹İµå½Ã flush ÇØÁÖ¾î¾ß ÇÑ´Ù.
+					System.out.println("[ë©”ì„¸ì§€ ì†¡ì‹  ì„±ê³µ]");
+					// ì„±ê³µì ìœ¼ë¡œ ì—¬ê¸°ê¹Œì§€ ì „ì†¡í–ˆë‹¤ëŠ” ê²ƒì„ ì•Œë¦¬ê¸° ìœ„í•´ ë°˜ë“œì‹œ flush í•´ì£¼ì–´ì•¼ í•œë‹¤.
 					out.flush();
 				} catch (Exception e) {
 					try {
-						System.out.println("[¸Ş¼¼Áö ¼Û½Å ¿À·ù]");
-						// ¿¹¿Ü ¹ß»ı ½Ã ¸ŞÀÎ ÇÔ¼öÀÇ clientÀÇ Á¤º¸¸¦ ´ãµç clients¹è¿­¿¡¼­
-						// ÇöÀç Á¸ÀçÇÏ´Â Client¸¦ Áö¿öÁØ´Ù.
+						System.out.println("[ë©”ì„¸ì§€ ì†¡ì‹  ì˜¤ë¥˜]");
+						// ì˜ˆì™¸ ë°œìƒ ì‹œ ë©”ì¸ í•¨ìˆ˜ì˜ clientì˜ ì •ë³´ë¥¼ ë‹´ë“  clientsë°°ì—´ì—ì„œ
+						// í˜„ì¬ ì¡´ì¬í•˜ëŠ” Clientë¥¼ ì§€ì›Œì¤€ë‹¤.
 						Main.clients.remove(Client.this);
-						// ¿À·ù°¡ »ı±ä clientÀÇ socketÀ» ´İ´Â´Ù.
+						// ì˜¤ë¥˜ê°€ ìƒê¸´ clientì˜ socketì„ ë‹«ëŠ”ë‹¤.
 						ChatSocket.close();
 					} catch (Exception e2) {
 						e2.printStackTrace();
@@ -257,24 +257,24 @@ public class Client {
 				}
 			}
 		};
-		// Main threadPool¿¡ Ãß°¡ ÇÑ´Ù.
+		// Main threadPoolì— ì¶”ê°€ í•œë‹¤.
 		Main.threadPool.submit(thread);
 	}
 
 	public void liarSelect() {
 
-		int cnt = names.size();// ÇöÀç Á¢¼ÓÇØ ÀÖ´Â client ¼ö
+		int cnt = names.size();// í˜„ì¬ ì ‘ì†í•´ ìˆëŠ” client ìˆ˜
 		gameClient=cnt;
 		Random rand = new Random();
-		int liarIndex = rand.nextInt(cnt);// rand.nextInt()¹İÈ¯ °ª 0~n¹Ì¸¸ÀÇ Á¤¼ö
+		int liarIndex = rand.nextInt(cnt);// rand.nextInt()ë°˜í™˜ ê°’ 0~në¯¸ë§Œì˜ ì •ìˆ˜
 		int clientCnt = 0;
 		liarName=names.get(liarIndex);
 		
-		//¿©±â ¹Ø¿¡ ¼öÁ¤ÇØ¾ß ÇÑ´Ù.
+		//ì—¬ê¸° ë°‘ì— ìˆ˜ì •í•´ì•¼ í•œë‹¤.
 		String word=wordProcess();
-		Iterator<Client> iterator = Main.clients.iterator();// Iterator ÀÌ¿ë ¹İº¹
+		Iterator<Client> iterator = Main.clients.iterator();// Iterator ì´ìš© ë°˜ë³µ
 		while (iterator.hasNext()) {
-			// ÇÏ³ª¾¿ ¸ğµç client ¿¡ Á¢±ÙÇÑ´Ù.
+			// í•˜ë‚˜ì”© ëª¨ë“  client ì— ì ‘ê·¼í•œë‹¤.
 			Client client = iterator.next();
 			client.sendChat("====================================");
 			try {
@@ -283,15 +283,15 @@ public class Client {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			client.sendChat("°ÔÀÓÀÌ °ğ ½ÃÀÛµË´Ï´Ù.\n");
+			client.sendChat("ê²Œì„ì´ ê³§ ì‹œì‘ë©ë‹ˆë‹¤.\n");
 			try {
 				TimeUnit.SECONDS.sleep(1);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			if (liarName.equals(client.names.get(clientCnt))) {// liar ÀÎ °æ¿ì
-				client.sendChat("º»ÀÎÀº [¶óÀÌ¾î]ÀÔ´Ï´Ù. °É¸®Áö ¾Ê°Ô Àß Çàµ¿ÇÏ¼¼¿ä\n");
+			if (liarName.equals(client.names.get(clientCnt))) {// liar ì¸ ê²½ìš°
+				client.sendChat("ë³¸ì¸ì€ [ë¼ì´ì–´]ì…ë‹ˆë‹¤. ê±¸ë¦¬ì§€ ì•Šê²Œ ì˜ í–‰ë™í•˜ì„¸ìš”\n");
 				try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e1) {
@@ -299,16 +299,16 @@ public class Client {
 					e1.printStackTrace();
 				}
 				client.sendChat("====================================");
-				System.out.println("[¶óÀÌ¾î°¡ ¼±Á¤µÇ¾ú½À´Ï´Ù]");
+				System.out.println("[ë¼ì´ì–´ê°€ ì„ ì •ë˜ì—ˆìŠµë‹ˆë‹¤]");
 			} else {
-				client.sendChat("º»ÀÎÀº [½Ã¹Î]ÀÔ´Ï´Ù.\n");
+				client.sendChat("ë³¸ì¸ì€ [ì‹œë¯¼]ì…ë‹ˆë‹¤.\n");
 				try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				client.sendChat("ÁÖÁ¦¾î´Â [" + word + "] ÀÔ´Ï´Ù.\n");
+				client.sendChat("ì£¼ì œì–´ëŠ” [" + word + "] ì…ë‹ˆë‹¤.\n");
 				try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e1) {
@@ -322,16 +322,16 @@ public class Client {
 	}
 
 	public String wordProcess() {
-		// ÁÖÁ¦ "À½½Ä, µ¿¹°, Á÷¾÷" ´Ü¾î·Î ·£´ı ¼±ÅÃ
-		ArrayList<String> topic = new ArrayList<>(); // ¹®ÀÚ¿­ Å¸ÀÔÀÇ ÁÖÁ¦ °´Ã¼ »ı¼º
+		// ì£¼ì œ "ìŒì‹, ë™ë¬¼, ì§ì—…" ë‹¨ì–´ë¡œ ëœë¤ ì„ íƒ
+		ArrayList<String> topic = new ArrayList<>(); // ë¬¸ìì—´ íƒ€ì…ì˜ ì£¼ì œ ê°ì²´ ìƒì„±
 		// add
 		String giveTopic = "";
-		topic.add("À½½Ä");
-		topic.add("µ¿¹°");
-		topic.add("Á÷¾÷");
+		topic.add("ìŒì‹");
+		topic.add("ë™ë¬¼");
+		topic.add("ì§ì—…");
 
-		Collections.shuffle(topic); // shuffleÀ» ÅëÇØ ÁÖÁ¦ °ªÀ» ·£´ıÀ¸·Î ¼ø¼­ Àç¹èÄ¡
-		String getTopic = topic.get(0); // mixµÈ ÁÖÁ¦Áß Ã¹¹øÂ° ÁÖÁ¦ °¡Á®¿À±â
+		Collections.shuffle(topic); // shuffleì„ í†µí•´ ì£¼ì œ ê°’ì„ ëœë¤ìœ¼ë¡œ ìˆœì„œ ì¬ë°°ì¹˜
+		String getTopic = topic.get(0); // mixëœ ì£¼ì œì¤‘ ì²«ë²ˆì§¸ ì£¼ì œ ê°€ì ¸ì˜¤ê¸°
 		for (Client client : Main.clients) {
 
 			client.sendChat("====================================");
@@ -341,7 +341,7 @@ public class Client {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			client.sendChat("°ÔÀÓ ÁÖÁ¦´Â " + getTopic + " ÀÔ´Ï´Ù");
+			client.sendChat("ê²Œì„ ì£¼ì œëŠ” " + getTopic + " ì…ë‹ˆë‹¤");
 		}
 		try {
 			TimeUnit.SECONDS.sleep(1);
@@ -349,29 +349,29 @@ public class Client {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		// ¼±ÅÃ µÈ ÁÖÁ¦ÀÇ Á¦½Ã¾îÆÄÀÏ ºÒ·¯¿À±â
+		// ì„ íƒ ëœ ì£¼ì œì˜ ì œì‹œì–´íŒŒì¼ ë¶ˆëŸ¬ì˜¤ê¸°
 		try {
 			File fileName;
-			if (getTopic == "À½½Ä") {
-				fileName = new File("E:\\JavaWork\\LiarServer\\Topic\\food.txt"); // Path = ÁÖÁ¦°¡ À½½ÄÀÏ¶§ À½½Ä Á¦½Ã¾îÆÄÀÏ
-			} else if (getTopic == "µ¿¹°") {
-				fileName = new File("E:\\JavaWork\\LiarServer\\Topic\\animal.txt"); // Path = ÁÖÁ¦°¡ µ¿¹°ÀÏ¶§ µ¿¹° Á¦½Ã¾îÆÄÀÏ
-			} else {// Á÷¾÷
-				fileName = new File("E:\\JavaWork\\LiarServer\\Topic\\job.txt"); // Path = ÁÖÁ¦°¡ Á÷¾÷ÀÏ¶§ Á÷¾÷ Á¦½Ã¾îÆÄÀÏ
+			if (getTopic == "ìŒì‹") {
+				fileName = new File("E:\\JavaWork\\LiarServer\\Topic\\food.txt"); // Path = ì£¼ì œê°€ ìŒì‹ì¼ë•Œ ìŒì‹ ì œì‹œì–´íŒŒì¼
+			} else if (getTopic == "ë™ë¬¼") {
+				fileName = new File("E:\\JavaWork\\LiarServer\\Topic\\animal.txt"); // Path = ì£¼ì œê°€ ë™ë¬¼ì¼ë•Œ ë™ë¬¼ ì œì‹œì–´íŒŒì¼
+			} else {// ì§ì—…
+				fileName = new File("E:\\JavaWork\\LiarServer\\Topic\\job.txt"); // Path = ì£¼ì œê°€ ì§ì—…ì¼ë•Œ ì§ì—… ì œì‹œì–´íŒŒì¼
 			}
 			FileReader filereader = new FileReader(fileName);
-			// ÀÔ·Â ¹öÆÛ »ı¼º
+			// ì…ë ¥ ë²„í¼ ìƒì„±
 			BufferedReader bufReader = new BufferedReader(filereader);
 			String line = "";
 			ArrayList<String> getWord = new ArrayList<String>();
 			while ((line = bufReader.readLine()) != null) {
 				getWord.add(line);
 			}
-			// .readLine()Àº ³¡¿¡ °³Çà¹®ÀÚ¸¦ ÀĞÁö ¾Ê´Â´Ù.
+			// .readLine()ì€ ëì— ê°œí–‰ë¬¸ìë¥¼ ì½ì§€ ì•ŠëŠ”ë‹¤.
 
-			// Á¦½Ã¾î ·£´ıÀ¸·Î ¼¯±â
-			Collections.shuffle(getWord); // ¼¯±â
-			giveTopic = getWord.get(0); // ¼¯Àº Á¦½Ã¾î Ã¹¹øÂ° »Ì±â
+			// ì œì‹œì–´ ëœë¤ìœ¼ë¡œ ì„ê¸°
+			Collections.shuffle(getWord); // ì„ê¸°
+			giveTopic = getWord.get(0); // ì„ì€ ì œì‹œì–´ ì²«ë²ˆì§¸ ë½‘ê¸°
 
 			bufReader.close();
 			filereader.close();
@@ -381,6 +381,6 @@ public class Client {
 		} catch (IOException e) {
 			e.getStackTrace();
 		}
-		return giveTopic; // Á¦½Ã¾î ¹İÈ¯
+		return giveTopic; // ì œì‹œì–´ ë°˜í™˜
 	}
 }
