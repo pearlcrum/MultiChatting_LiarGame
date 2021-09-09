@@ -12,7 +12,7 @@ By using Java &amp; JavaFX
 ### 4.Vote
 ![vote](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F7ksT2%2FbtrcwwUf8Ps%2FqDkBtkLKYD24oqLnBuU9KK%2Fimg.png)
 
-This page is designed to practice Java and Java FX as a Team.
+This page is designed to practice Java, Java FX and Oracle DB as a Team.
 
 
 
