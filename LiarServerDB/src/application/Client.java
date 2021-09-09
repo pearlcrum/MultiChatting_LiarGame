@@ -66,6 +66,9 @@ public class Client {
 						while (length == -1)
 							throw new IOException();
 						// 메세지를 정상적으로 받은 경우
+						if(totalNum>=9) {
+							sendLogin(ServerNotAvailable);
+						}
 						if(serverAvailable==false)
 						{
 							sendLogin(ServerNotAvailable);
