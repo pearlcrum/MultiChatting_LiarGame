@@ -21,7 +21,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="105.0" layoutX="117.0" layoutY="116.0" stroke="#b9b2b2" strokeType="INSIDE" width="210.0" />
       <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="201.0" layoutY="80.0">
          <image>
-            <Image url="@../../images/detect.png" />
+            <Image url="@images/detect.png" />
          </image>
       </ImageView>
       <Button fx:id="vote" layoutX="182.0" layoutY="248.0" mnemonicParsing="false" text="투표하기" onAction="#voteConfirm"/>
