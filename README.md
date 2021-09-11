@@ -4,16 +4,13 @@ By using Java, JavaFX, and Oracle DataBase
 
 ### 1.Login
 ![login](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbswIqw%2FbtrctubWmNG%2F0mOBPbrsMuNn4i90fvJd00%2Fimg.png)
-#### 1.1 Login Errors
-![duplicateError](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcL9fqH%2FbtreMvEWq3R%2FkBDBCEzXgWtdz2kAkiwmN1%2Fimg.png)
-![caseEmpty](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdyukPs%2FbtreKlXG9is%2FJQusKzlNK5XRE7x5jo14pk%2Fimg.png)
-![gameRunning](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FOy48g%2FbtreHTA5l14%2Fsp5t6ED0mwIQvkQ09ZiqAk%2Fimg.png)
+
 ### 2.MainPage
 ![mainPage](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcvFGwO%2Fbtrcs7HIj6i%2F7KJD2vbELWBeTGjxL08dn1%2Fimg.png)
 ![caseCitizen](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpbYfw%2FbtreLgByFUj%2FuKDJGPhaIVBm5oFjmvbU5k%2Fimg.png)
 ![caseLiar](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FGmAd0%2FbtreLKPXUqW%2F2OVJBnxlgZJHskth8iKCAK%2Fimg.png)
 ### 3.Help 
-![help](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbfKG7d%2FbtrcA2xZQnv%2Fhvbk5DLlRuyeCKG6Yr8Qhk%2Fimg.png)
+![help](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FSzbEV%2FbtreJxEpxC6%2FrUKFVi4OKpSkovwqBjESUk%2Fimg.png)
 ### 4.Vote
 ![vote2](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FSygLL%2FbtreKvZ1zGE%2FUbuaIKWSnPZFxWURhK43K0%2Fimg.png)
 
