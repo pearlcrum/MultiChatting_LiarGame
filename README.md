@@ -29,7 +29,7 @@ This page is designed to practice Java, Java FX and Oracle DB as a Team.
 
 - JAVA FX, SceneBuilder
 
-- Oracle 11 and User Scott/ Tiger is needed (Can change in JDBCTemplate in LiarServer)
+- Oracle 11 and User Scott/ TIGER is needed (Can change in JDBCTemplate in LiarServer)
 
 ## Functions / 기능
 
