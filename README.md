@@ -4,7 +4,7 @@ By using Java, JavaFX, and Oracle DataBase
 
 ### 1.Login
 ![login](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbswIqw%2FbtrctubWmNG%2F0mOBPbrsMuNn4i90fvJd00%2Fimg.png)
-### 1.1 Login Errors
+#### 1.1 Login Errors
 ![duplicateError](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcL9fqH%2FbtreMvEWq3R%2FkBDBCEzXgWtdz2kAkiwmN1%2Fimg.png)
 ![caseEmpty](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdyukPs%2FbtreKlXG9is%2FJQusKzlNK5XRE7x5jo14pk%2Fimg.png)
 ![gameRunning](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FOy48g%2FbtreHTA5l14%2Fsp5t6ED0mwIQvkQ09ZiqAk%2Fimg.png)
