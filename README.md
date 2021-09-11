@@ -15,7 +15,6 @@ By using Java, JavaFX, and Oracle DataBase
 ### 3.Help 
 ![help](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbfKG7d%2FbtrcA2xZQnv%2Fhvbk5DLlRuyeCKG6Yr8Qhk%2Fimg.png)
 ### 4.Vote
-![vote1](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F7ksT2%2FbtrcwwUf8Ps%2FqDkBtkLKYD24oqLnBuU9KK%2Fimg.png)
 ![vote2](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FSygLL%2FbtreKvZ1zGE%2FUbuaIKWSnPZFxWURhK43K0%2Fimg.png)
 ![caseFinish](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fn4Fw8%2FbtreK7duhmx%2FLNRO63WPy4m5qNLu1HYpRK%2Fimg.png)
 
