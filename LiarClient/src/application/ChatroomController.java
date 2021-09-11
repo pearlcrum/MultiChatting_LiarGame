@@ -32,6 +32,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ChatroomController implements Initializable {
 
@@ -366,6 +367,7 @@ public class ChatroomController implements Initializable {
 			Stage stage = new Stage();
 			
 			stage.setScene(scene);
+			stage.initStyle(StageStyle.UNDECORATED);
 			stage.setTitle("Voting Liar");
 			stage.show();
 		} catch (IOException e) {
