@@ -29,6 +29,7 @@ public class VoteController implements Initializable {
 	public void initFunc(ObservableList<String> arr,ClientMain clientSource) {
 		list = arr;
 		combobox.setItems(list);
+		combobox.getSelectionModel().selectFirst();
 		this.clientSource=clientSource;
 		System.out.println(list);
 	}

@@ -101,11 +101,13 @@ public class LoginController implements Initializable {
 			if (check == true) {
 				try {
 					FXMLLoader loader = new FXMLLoader();
+					//loader.setLocation(getClass().getResource("WaitingRoom.fxml"));
 					loader.setLocation(getClass().getResource("Chatroom_final.fxml"));
 					Parent root;
 					try {
 						root = (Parent) loader.load();
 						Scene scene = new Scene(root);
+						//scene.getStylesheets().add(getClass().getResource("WaitingRoom.css").toString());
 						scene.getStylesheets().add(getClass().getResource("Chatroom_final.css").toString());
 						ChatroomController pop = loader.getController();
 						pop.initData(loginSource, ID);

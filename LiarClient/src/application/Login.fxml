@@ -21,7 +21,7 @@
    <children>
       <ImageView fitHeight="60.0" fitWidth="58.0" layoutX="120.0" layoutY="98.0">
          <image>
-            <Image url="@images/chat_icon3.jpg" />
+            <Image url="@../../images/chat_icon3.jpg" />
          </image>
       </ImageView>
       <Text layoutX="107.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In" textAlignment="CENTER" wrappingWidth="87.0">

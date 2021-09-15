@@ -65,7 +65,6 @@ public class ChatroomController implements Initializable {
 	String nickname;
 	String regex = "[@#$%^&*():\"{}|<>]"; //홍경인
 
-
 	@FXML
 	void gameStart() {
 		if (game.getText().equals("게임시작")) {
@@ -365,7 +364,6 @@ public class ChatroomController implements Initializable {
 			pop.initFunc(members,clientSource);
 
 			Stage stage = new Stage();
-			
 			stage.setScene(scene);
 			stage.initStyle(StageStyle.UNDECORATED);
 			stage.setTitle("Voting Liar");
