@@ -1,8 +1,6 @@
 package application;
 
 import static common.JDBCTemplate.*;
-import com.biz.*;
-
 
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -12,6 +10,8 @@ import java.util.Iterator;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import com.liar.biz.*;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -25,7 +25,6 @@ public class Main extends Application {
 	public static Vector<Client> clients = new Vector<Client>();
 	ServerSocket loginServerSocket;// 9876
 	ServerSocket chatServerSocket;// 9877
-	ServerSocket voteServerSocket;// 9878
 	public static Connection conn;
 	MyLiarBiz biz=new MyLiarBiz();
 	
